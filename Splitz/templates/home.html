@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%load static%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="{% static 'images/logo .png' %}">
+    <title>Splitwise Clone</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <style>
+        body{
+            font-family: "Montserrat",sans-serif;
+            /* font-family: Arial, sans-serif;
+            background-color: #ffffff; */
+        }
+
+        .testimonial-card {
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: #fff;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            height: 33vh; /* Ensures all cards have the same height */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            overflow: hidden;
+
+            /* margin-bottom: 20px; */
+        }
+        .testimonial-card:hover {
+            transform: translateY(5px);
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        .testimonial-img {
+            height: 30px;
+            margin-top: auto;
+        }
+        .testimonial-footer {
+            display: flex;
+            align-items: center; /* Aligns image and text in the same row */
+        }
+
+
+        .footer {
+            background-color: #fff;
+            padding: 40px 0;
+            position: relative;
+            width:100%     /* new */
+        }
+
+        .footer h6 {
+            font-size: 15px;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: #333;
+            font-size: 13px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons a {
+            font-size: 20px;
+            margin-right: 10px;
+            color: #333;
+        }
+
+            /* Ensures footer layout is evenly distributed */
+        .footer .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 85%; /* Adjusted width */
+            margin: auto;
+            align-items: flex-start;
+        }
+
+            /* Shifting Splitwise, Account, More slightly left */
+        .footer .row {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+            /* Ensuring buttons and text below them are aligned in one row */
+        .download-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+            /* Adds vertical separator only between Splitwise and Account */
+        .footer .col-md-3:nth-child(1),
+        .footer .col-md-3:nth-child(2) {
+            border-right: 1px solid #ccc;
+            padding-right: 20px;
+        }
+
+            /* No border for More and Download sections */
+        .footer .col-md-3:nth-child(3),
+        .footer .col-md-3:nth-child(4) {
+            border-right: none;
+        }
+
+            /* Ensuring download buttons stay in one row */
+        .download-btns {
+            display: flex;
+            /* justify-content: center; */
+            gap: 10px;
+            flex-wrap: nowrap;
+            align-items: center;
+            white-space: nowrap;
+        }
+        .download-btn {
+            width: 50%;       /*140px*/
+            height: auto;
+        }
+        .download-text {
+            font-size: 14px;
+            margin-top: 5px;
+            text-align: right; /* Align text below buttons to the right */
+        }
+
+        .bodybackground{
+            background-image: url(../static/images/BG.png);
+            background-size: cover;
+            width: 100%;
+            /* height:86vh; */
+            font-family: "Lato",sans-serif;
+
+        }
+        .bodybackground-text{
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #373B3F;;
+        }
+    
+    </style>
+
+</head>
+
+<body>
+<!-- d-inline-block  -->
+            <!-- NAVBAR -->
+    <nav class=" bg-body-tertiary container mt-2 d-flex justify-content-between">
+        <div >
+            <a href="{% url 'home' %}" style="text-decoration: none;">
+                <img src="{% static 'images/logo .png'%}" alt="Logo" width="8%"  class="align-text-bottom">
+                <span class="fw-bold text-dark">Splitwise</span>
+            </a>
+        </div>
+        <div  class="d-flex" >
+            <a href="{%url 'login'%}" class="btn me-2 fw-bold" style="color: #1CC29F;">Login</a>
+            <a href="{% url 'signup' %}" class="btn text-white" style="background-color: #1CC29F;">Signup</a>
+        </div>
+        
+    </nav>
+
+<!--  col-lg-6 col-md-6 col-sm-6 col-xs-6 -->
+            <!-- BODY CONTENT -->
+    <div class="container-fluid bodybackground" style="height: 36em;">
+        <div class="row ">
+        <div class="col-6" style="display: flex; justify-content: center;">
+            <div style="display: flex; flex-direction: column; align-items:self-start; margin-top: 10%; text-align: left;">
+                <h1 class="bodybackground-text">Less stress when <br> sharing expenses</h1>
+                <h1 style="color: #1CC29F;" class="bodybackground-text">on trips.</h1>
+
+                <div style="display: flex; flex-direction: row;">
+                    <img src="../static/images/small plane.png" alt=""style="width: 4vw;">
+                    <img src="../static/images/small home.png" alt="" style="width: 4vw;">
+                    <img src="../static/images/small love.png" alt="" style="width: 4vw;">
+                    <img src="../static/images/small star.png" alt="" style="width: 4vw;">
+                </div>
+                <p>
+                    Keep track of your shared expenses and <br>balances with housemates, trips, groups, <br>friends, and family.</p>
+                <a href="{%url 'signup' %}" class="btn btn-lg text-light" style="background-color: #1CC29F;">Signup</a>
+                <p>Free for <a href="https://apps.apple.com/us/app/splitwise/id458023433" class="text-decoration-none text-dark"><i class="fa-brands fa-apple " style="color: #18191b;"></i>iphone</a>,
+                    <a href="https://play.google.com/store/apps/details?id=com.Splitwise.SplitwiseMobile    " class="text-decoration-none text-dark"><i class="fa-brands fa-android" style="color: #212121;"></i>Android</a>
+                    ,and web.</p>
+            </div>
+        </div>
+
+            <div class="col-6" style="display: flex;justify-content: start;align-items: center;">
+                <img src="../static/images/plane.png" alt="" width="60%">
+            </div>
+
+        </div>
+    </div>
+
+    <div>
+        <img src="{% static 'images/home 2.png' %}" alt="home 2" style="width: 100%;">
+        <img src="{% static 'images/home 3.png' %}" alt="home 3" style="width: 100%;">
+    </div>
+    
+    <div class="container-fluid bodybackground" style="background-color: #8656CD;height: 36em;width: 100%;">
+        <div class="row">
+            <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center" style="margin-top: 10%;">
+                <h1 class="text-light">Get Even More with PRO</h1>
+                <p class="text-light">Get even more organized with receipt scanning,<br> charts and graphs, currency conversion, and <br>more!</p>
+                <a href="{% url 'signup' %}" class="btn text-white" style="background-color: rgba(55, 59, 63, 0.3); border-color: #fff;
+                        ">Signup</a>
+            </div>
+<!--padding: 0.75em 2.5em 0.75em 2.5em; -->
+            <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 px-2 py-1" style="display: flex;flex-direction: column;justify-content: end;">
+                <img src="../static/images/phone.png" alt="" style="width: 40%;">
+            </div>
+        </div>
+
+    </div>
+
+    <div>
+        <img src="{% static 'images/home 5.png' %}" alt="home 5 " style="width: 100%;">
+    </div>
+
+
+                    <!-- CARD -->
+    <div class="container mt-5"  style="font-size: .8rem;">
+        <div class="row ">
+            <!-- Testimonial 1 -->
+            <div class="col-md-4 ">
+                <div class="testimonial-card">
+                    <p>“Fundamental" for tracking finances. As good as WhatsApp for containing awkwardness.</p>
+                    <div class="testimonial-footer">
+                        <img src="{% static 'images/FT logo.png' %}" alt="Financial Times" class="testimonial-img" style="width: 4vw; height: 8vh;">
+                        <em>Financial Times</em>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonial 2 -->
+            <div class="col-md-4 ">
+                <div class="testimonial-card">
+                    <p>Life hack for group trips. Amazing tool to use when traveling with friends! Makes life so easy!!</p>
+                    <em>Ahah S, iOS</em>
+                </div>
+            </div>
+    
+            <!-- Testimonial 3 -->
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <p>Makes it easy to split everything from your dinner bill to rent.</p>
+                    <div class="testimonial-footer">
+                        <img src="{% static 'images/NY logo.png' %}" alt="NY Times" class="testimonial-img" style="width: 2vw; height: 4vh;">
+                        <em class="ms-2">NY Times</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="row">
+            <!-- Testimonial 4 -->
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <p>So amazing to have this app manage balances and help keep money out of relationships. Love it!</p>
+                    <em>Haseena C, Android</em>
+                </div>
+            </div>
+    
+            <!-- Testimonial 5 -->
+            <div class="col-md-4 ">
+                <div class="testimonial-card">
+                    <p>I never fight with roommates over bills because of this genius expense-splitting app.</p>
+                    <div class="testimonial-footer">
+                        <img src="{% static 'images/BI logo.png' %}" alt="Business Insider" class="testimonial-img" style="width: 8%;">
+                        <em class="ms-2">Business Insider</em>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Testimonial 6 -->
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <p>I use it every day. I use it for trips, roommates, loans. I love Splitwise.</p>
+                    <em>Trickseyus, iOS</em>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+            <!-- FOOTER -->
+    <footer class="footer mt-5">
+        <div class="container">
+            <div class="row">
+                <!-- Splitwise Column -->
+                <div class="col-md-3">
+                    <h6 class="fw-bold text-success">Splitwise</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Jobs</a></li>
+                        <li><a href="#">Calculators</a></li>
+                        <li><a href="#">API</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Account Column -->
+                <div class="col-md-3">
+                    <h6 class="fw-bold text-danger">Account</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="{%url 'login' %}">Log in</a></li>
+                        <li><a href="{%url 'signup' %}">Sign up</a></li>
+                        <li><a href="#">Reset password</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li><a href="#">Splitwise Pro</a></li>
+                        <li><a href="#">Splitwise Pay</a></li>
+                        <li><a href="#">Splitwise Card</a></li>
+                    </ul>
+                </div>
+    
+                <!-- More Column -->
+                <div class="col-md-3">
+                    <h6 class="fw-bold">More</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+
+                    <!-- Social Media Icons -->
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+        
+                <!-- Download Buttons -->
+                <div class="col-md-3 download-section">
+                    <div class="download-btns">
+                        <img src="{% static 'images/g play.png' %}" alt="Google Play" class="download-btn">
+                        <img src="{% static 'images/apple.png' %}" alt="App Store" class="download-btn">
+                    </div>
+                    <p class="download-text">Made with :) in Providence, RI, USA</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <img src="{% static 'images/footer image.png'  %}" alt="image" style="width: 100%;">
+</body>
+</html>

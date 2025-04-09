@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%load static%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup- Splitwise Clone</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+
+    .recaptcha-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .recaptcha-container input[type="checkbox"] {
+        position: absolute;
+        top: 50%;
+        left: 8.5%;
+        transform: translate(-52%, -52%);
+        width: 39px;
+        height: 24px;
+        opacity: 1;  /* Make it visible */
+        cursor: pointer;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="container mt-5 d-flex justify-content-center align-items-center" style="height: 100vh; width: 100%; max-width: 800px;">
+        <div class="row">
+
+                <div class=" col-lg-6 col-md-6 col-sm-6 mt-5 d-flex justify-content-center ">
+                    <a href="{% url 'home' %}"><img src="{%static 'images/splitwise sigunup logo.png'%}" alt="Splitwise Logo" style="height: 32vh;"></a>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-6 mt-5">
+                    <form action="" method="post">
+                        <h6 class="text-secondary">INTRODUCE YOURSELF</h6>
+                        {%csrf_token%}
+                        
+                        <h6 >Hi there! My name is</h6>
+                        <input type="text" name="username" class="form-control p-1 mb-1" required>
+                        <!-- <span>{{form.username}}</span> -->
+
+                        <h6>First Name </h6>
+                        <input type="text" name="first_name" class="form-control p-1 mb-1" required>
+                        <!-- {{form.first_name}} -->
+
+                        <h6>Last Name</h6>
+                        <input type="text" name="last_name" class="form-control p-1 mb-1" required>
+                        <!-- {{form.last_name}} -->
+
+                        <h6>Here's my<strong> email address</strong></h6>
+                        <input type="email" name="email" class="form-control p-1 mb-1" required>
+                        <!-- {{form.email}} -->
+
+                        <h6>And here's my<strong> password</strong></h6>
+                        <input type="password" name="password" class="form-control p-1 mb-2" required>
+                        <!-- {{form.password}} -->
+
+                        <!-- <img src="{%static 'images/robot.png'%}" alt="reCAPTCHA" style="height: 9vh;" ><br> -->
+                        <div class="recaptcha-container mt-3">
+                            <input type="checkbox" id="notRobot">
+                            <label for="notRobot">
+                                <img src="{% static 'images/robot.png' %}" alt="I'm not a robot" style="height: 9vh;">
+                            </label>
+                        </div><br>
+
+                        <button type="submit" class="btn  text-white" style="border: none; background-color: orangered; border-radius: 8px;">Sign me up!</button> <span class="text-secondary">or</span>
+                        <a href="#"><img src="{%static 'images/google.png'%}" alt="google" style="height: 3vh;width: 130px;"></a>    
+                    </form>
+
+                    <br>
+                    <p style="font-size: 13px;text-wrap: nowrap;"><a class="text-decoration-none mt-4" href="#">By signing up, you accept the Splitwise Terms of Service.</a></p>
+                    <p class="mt-2 text-secondary" style="font-size: 15px;">Don't use USD for currency?<a href="#" class="text-decoration-none">Click Here</a></p>
+                </div>
+
+        </div>
+    </div>
+</body>
+</html> 
+
+
+
+
+
+
+
+
+<!-- 
+<body>
+    
+    <div class="container">
+        <img style="margin-top: 20px; margin-right: 35px;" height="200" width="200" class="envelope" src="https://assets.splitwise.com/assets/core/logo-square-65a6124237868b1d2ce2f5db2ab0b7c777e2348b797626816400534116ae22d7.svg">
+        <div class="fom-body">
+
+        <h3 style="color: rgb(124, 124, 124); font-size: 17px; font-weight:600;">INTRODUCE YOURSELF</h3>
+    <form action="" method="post">
+        {%csrf_token%}
+        <div class="label1">
+            <label for="">Hi there! My Username is</label>
+
+        </div>
+        <div class="">
+            <input class="inpt-txt1" type="text" name="username">
+        </div>
+    <div class="label2">
+        <label for=""> Here's is my <span style="font-weight:bold;">First name:</span> </label>
+    </div>
+    <div>
+        <input class="inpt-txt" type="text" name="first_name">
+    </div>
+    <div class="label2">
+        <label for="">Here's is my <span style="font-weight: bold;">Last name:</span></label>
+    </div>
+    <div>
+        <input class="inpt-txt" type="text" name="first_name">
+    </div>
+    
+    <div class="label2">
+        <label for="">Here's is my <span style="font-weight: bold;">email address:</span></label>
+    </div>
+    <div class="">
+        <input class="inpt-txt" type="text" name="email">
+    </div>
+    <div class="label2">
+        <label for="">And here's my <span style="font-weight: bold;">password:</span> </label>
+    </div>
+    <div class="">
+        <input class="inpt-txt" type="text" name="password">
+    </div>
+        <div class="check-box">
+        <input class="chkbx" type="checkbox">
+        <a style=" margin-top: 28px; margin-left: 10px;" > I'm not a robot</a>
+        <img class="captcha" src="{% static 'images/google_recaptcha.webp'%}" alt="" >
+      
+    </div>
+<div class="btn-box">
+        <button class="btn" type="submit">Sign me up!</button>
+        <a class="or-txt" style="color: gray;">or</a>
+        <div class="logo-box">
+        <img class="logo" src="{% static 'images/Google_Icon.webp'%}" alt="" >
+        <a class="txt">Sign up with Google</a>
+      
+    </div>                                                                                                                                      
+    </div>
+ 
+    <a style=" text-decoration: none; color: rgb(0, 130, 211); font-size: 15px;" href="">By signing up,your accept the Splitwise Terms of Services.</a>
+    <p style="color: gray;">Don't use USD for currency?<a style="text-decoration: none; color: rgb(4, 146, 218);" href="">Click here.</a></p>
+
+    </div>
+    
+    </form>
+</div>
+    </div> -->
