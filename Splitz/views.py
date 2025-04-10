@@ -16,9 +16,6 @@ from Splitz.forms import *
 import random
 
 # Create your views here. 
-# webo ppeb wzqf modv
-# rzp_test_2KDmLYLam63pfJ     razor pay key_id
-# 54Z49MqvChA06KNsnkubIi2u    razor pay key_secret
 
 
                 ###         DECORATORS          ###
@@ -471,8 +468,6 @@ class PasswordChangeview(View):
 
 
             ###         PREMIUM         ###
-# rzp_test_2KDmLYLam63pfJ     razor pay key_id
-# 54Z49MqvChA06KNsnkubIi2u    razor pay key_secret
 
 RZP_KEY_ID = "rzp_test_2KDmLYLam63pfJ"
 RZP_KEY_SECRET = "54Z49MqvChA06KNsnkubIi2u"
